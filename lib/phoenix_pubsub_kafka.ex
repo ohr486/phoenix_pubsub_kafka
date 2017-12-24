@@ -1,0 +1,2 @@
+defmodule PhoenixPubsubKafka do
+end
