@@ -8,7 +8,7 @@ defmodule Phoenix.PubSub.Kafka do
 
   def init({server_name, opts}) when is_atom(server_name) do
     local_name = Module.concat(server_name, Local)
-    node_name = self()
+    node_name = node()
     server_opts = []
 
     fastlane = opts[:fastlane]
