@@ -1,9 +1,12 @@
 language: elixir
-sudo: false
+sudo: required
 otp_release:
   - 20.1
 elixir:
   - 1.5.1
+branches:
+  only:
+    - master
 env:
   global:
     - MIX_ENV=test
@@ -11,6 +14,11 @@ cache:
   directories:
     - _build
     - deps
+services:
+  - docker
+before_script:
+  - IP_IFACE=eth0 ./scripts/docker_up.sh
+
 script:
   #- mix credo --strict
   #- mix dialyzer --halt-exit-status
