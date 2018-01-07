@@ -1,2 +1,2 @@
-defmodule PhoenixPubsubKafka do
+defmodule Phoenix.Pubsub.Kafka do
 end
