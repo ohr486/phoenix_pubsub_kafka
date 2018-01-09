@@ -16,8 +16,6 @@ cache:
     - deps
 services:
   - docker
-before_script:
-  #- IP_IFACE=eth0 ./scripts/docker_up.sh
 
 script:
   #- mix credo --strict
