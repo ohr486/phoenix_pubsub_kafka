@@ -4,7 +4,7 @@ defmodule Phoenix.PubSub.Kafka.Topic do
   def phoenix_topic_to_kafka_topic(topic) do
     # TODO: change configuable
     conv_func = fn t -> t |> String.split(":") |> List.first end
-    conv_func().(topic)
+    conv_func.(topic)
     |> replace_invalid_chars
     |> add_prefix
   end
