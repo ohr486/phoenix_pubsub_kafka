@@ -1,6 +1,6 @@
-defmodule Phoenix.Pubsub.Kafka.Producer.SupervisorTest do
+defmodule Phoenix.PubSub.Kafka.Producer.SupervisorTest do
   use ExUnit.Case
-#  doctest Phoenix.Pubsub.Kafka.Producer.Supervisor
+#  doctest Phoenix.PubSub.Kafka.Producer.Supervisor
 
   test "greets the world" do
     assert true

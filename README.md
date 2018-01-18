@@ -1,4 +1,4 @@
-# PhoenixPubsubKafka
+# PhoenixPubSubKafka
 
 Kafka adapter for Phoenix's PubSub layer.
 

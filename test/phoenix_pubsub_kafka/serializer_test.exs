@@ -1,6 +1,6 @@
-defmodule Phoenix.Pubsub.Kafka.SerializerTest do
+defmodule Phoenix.PubSub.Kafka.SerializerTest do
   use ExUnit.Case
-#  doctest Phoenix.Pubsub.Kafka.Serializer
+#  doctest Phoenix.PubSub.Kafka.Serializer
 
   test "greets the world" do
     assert true

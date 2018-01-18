@@ -1,6 +1,6 @@
-defmodule Phoenix.Pubsub.KafkaTest do
+defmodule Phoenix.PubSub.KafkaTest do
   use ExUnit.Case
-#  doctest Phoenix.Pubsub.Kafka
+#  doctest Phoenix.PubSub.Kafka
 
   test "greets the world" do
     assert true

@@ -1,6 +1,6 @@
-defmodule Phoenix.Pubsub.Kafka.Producer.ServerTest do
+defmodule Phoenix.PubSub.Kafka.Producer.ServerTest do
   use ExUnit.Case
-#  doctest Phoenix.Pubsub.Kafka.Producer.Server
+#  doctest Phoenix.PubSub.Kafka.Producer.Server
 
   test "greets the world" do
     assert true

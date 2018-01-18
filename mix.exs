@@ -1,4 +1,4 @@
-defmodule PhoenixPubsubKafka.Mixfile do
+defmodule PhoenixPubSubKafka.Mixfile do
   use Mix.Project
 
   @version "0.0.1"
