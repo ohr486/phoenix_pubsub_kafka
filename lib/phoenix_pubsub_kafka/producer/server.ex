@@ -6,29 +6,29 @@ defmodule Phoenix.PubSub.Kafka.Producer.Server do
   alias Phoenix.PubSub.Kafka.Config
 
   def start_link(name, opts) do
-    Logger.debug "### Phoenix.PubSub.Kafka.Producer.Server.start_link(#{inspect name}, #{inspect opts}) ###"
+    #Logger.debug "### Phoenix.PubSub.Kafka.Producer.Server.start_link(#{inspect name}, #{inspect opts}) ###"
     GenServer.start_link(__MODULE__, [name, opts], name: name)
   end
 
   def init([name, opts]) do
-    Logger.debug "### Phoenix.PubSub.Kafka.Producer.Server.init(#{inspect name}, #{inspect opts}) ###"
+    #Logger.debug "### Phoenix.PubSub.Kafka.Producer.Server.init(#{inspect name}, #{inspect opts}) ###"
     Process.flag(:trap_exit, true)
     {:ok, %{}}
   end
 
   def broadcast(fastlane, pool_size, node_ref, from_pid, topic, payload) do
-    Logger.debug "### Phoenix.PubSub.Kafka.Producer.Server.broadcast ###"
-    Logger.debug "### #{inspect fastlane}, #{inspect pool_size}, #{inspect node_ref}, #{inspect from_pid}, #{inspect topic}, #{inspect payload}) ###"
+    #Logger.debug "### Phoenix.PubSub.Kafka.Producer.Server.broadcast ###"
+    #Logger.debug "### #{inspect fastlane}, #{inspect pool_size}, #{inspect node_ref}, #{inspect from_pid}, #{inspect topic}, #{inspect payload}) ###"
     do_broadcast(fastlane, pool_size, node_ref, from_pid, topic, payload)
   end
 
   def direct_broadcast(arg) do
-    Logger.debug "### Phoenix.PubSub.KafkaServer.direct_broadcast(#{inspect arg}) ###"
+    #Logger.debug "### Phoenix.PubSub.KafkaServer.direct_broadcast(#{inspect arg}) ###"
     # TODO: impl it
   end
 
   defp do_broadcast(fastlane, pool_size, node_ref, from_pid, phx_topic, payload) do
-    Logger.debug "### Phoenix.PubSub.KafkaServer.do_broadcast ###"
+    #Logger.debug "### Phoenix.PubSub.KafkaServer.do_broadcast ###"
 
     kafka_msg = {node_ref, fastlane, pool_size, from_pid, phx_topic, payload}
     partition = 0
@@ -42,7 +42,7 @@ defmodule Phoenix.PubSub.Kafka.Producer.Server do
                  }
                  |> KafkaEx.produce
 
-    Logger.debug "### topic seq:#{seq} ###"
+    #Logger.debug "### topic seq:#{seq} ###"
     :ok
   end
 end
