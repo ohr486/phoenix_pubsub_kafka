@@ -1,15 +1,12 @@
 defmodule Phoenix.PubSub.Kafka do
   use Supervisor
-  require Logger
 
   def start_link(name, opts) do
-    Logger.debug "# Phoenix.PubSub.Kafka.start_link(#{inspect name}, #{inspect opts}) #"
     sup_name = Module.concat(name, Supervisor)
     Supervisor.start_link(__MODULE__, [name, opts], name: sup_name)
   end
 
   def init([name, opts]) do
-    Logger.debug "# Phoenix.PubSub.Kafka.init(#{inspect name}, #{inspect opts}) #"
     node_name = node()
     fastlane = opts[:fastlane]
     pool_size = 1
