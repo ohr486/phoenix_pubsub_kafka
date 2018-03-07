@@ -1,7 +1,6 @@
 # for mix
 /_build/
 /deps/
-
 /cover/
 /doc/
 /.fetch
