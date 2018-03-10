@@ -7,6 +7,10 @@
 erl_crash.dump
 *.ez
 
+# for ide
+.idea
+phoenix_pubsub_kafka.iml
+
 # for editor
 *~
 *.swp
