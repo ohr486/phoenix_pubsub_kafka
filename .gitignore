@@ -9,7 +9,7 @@ erl_crash.dump
 
 # for ide
 .idea
-phoenix_pubsub_kafka.iml
+*.iml
 
 # for editor
 *~
