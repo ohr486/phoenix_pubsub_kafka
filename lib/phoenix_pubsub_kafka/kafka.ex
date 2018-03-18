@@ -19,7 +19,7 @@ defmodule Phoenix.PubSub.Kafka do
 
     dispatch_rules = [
       {:broadcast, Phoenix.PubSub.Kafka.Producer.Server, [fastlane, pool_size, node_ref]},
-      {:direct_broadcast, Phoenix.PubSub.Kafka.Producer.Server, []}, # TODO: handle it
+      {:direct_broadcast, Phoenix.PubSub.Kafka.Producer.Server, [fastlane, pool_size, node_ref]},
       {:node_name, __MODULE__, [node_name]}
     ]
 
