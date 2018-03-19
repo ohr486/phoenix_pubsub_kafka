@@ -10,7 +10,7 @@ defmodule Phoenix.PubSub.Kafka do
     node_name = node()
     fastlane = opts[:fastlane]
     pool_size = 1
-    node_ref = :crypto.strong_rand_bytes(24)
+    node_ref = :crypto.rand_bytes(24)
 
     kafka_opts = opts
                  |> Keyword.merge(
