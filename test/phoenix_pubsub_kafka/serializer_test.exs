@@ -1,8 +1,9 @@
 defmodule Phoenix.PubSub.Kafka.SerializerTest do
   use ExUnit.Case
-#  doctest Phoenix.PubSub.Kafka.Serializer
 
-  test "greets the world" do
-    assert true
-  end
+  @tag :skip
+  test "#encode_message"
+
+  @tag :skip
+  test "#decode_message"
 end

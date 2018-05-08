@@ -1,8 +1,9 @@
 defmodule Phoenix.PubSub.KafkaTest do
   use ExUnit.Case
-#  doctest Phoenix.PubSub.Kafka
 
-  test "greets the world" do
-    assert true
-  end
+  @tag :skip
+  test "#start_link"
+
+  @tag :skip
+  test "#init"
 end

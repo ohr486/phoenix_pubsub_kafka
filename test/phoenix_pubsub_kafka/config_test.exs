@@ -1,8 +1,21 @@
 defmodule Phoenix.PubSub.Kafka.ConfigTest do
   use ExUnit.Case
-#  doctest Phoenix.PubSub.Kafka.Config
 
-  test "greets the world" do
-    assert true
-  end
+  @tag :skip
+  test "#serializer"
+
+  @tag :skip
+  test "#invalid_topic_chars"
+
+  @tag :skip
+  test "#topic_prefix"
+
+  @tag :skip
+  test "#topic_convert_func"
+
+  @tag :skip
+  test "#listening_topics"
+
+  @tag :skip
+  test "#consumer_group_name"
 end
