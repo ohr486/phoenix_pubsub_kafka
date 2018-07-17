@@ -10,6 +10,9 @@ defmodule Phoenix.PubSub.Kafka.Consumer.Supervisor do
   end
 
   def init([server_name, opts]) do
+
+    sleep_when_restarting()
+
     server_opts = opts
                   |> Keyword.merge(
                     name: server_name
@@ -19,5 +22,15 @@ defmodule Phoenix.PubSub.Kafka.Consumer.Supervisor do
       supervisor(KafkaEx.ConsumerGroup, cons_grp_opts)
     ]
     supervise(children, strategy: :one_for_all)
+  end
+
+  defp sleep_when_restarting do
+    alias Phoenix.PubSub.Kafka.Consumer.RestartMonitor
+
+    if RestartMonitor.get_count() > Config.restart_count_threshold() do
+      Process.sleep(Config.restart_interval())
+    end
+
+    RestartMonitor.increment_count()
   end
 end
