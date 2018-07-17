@@ -37,4 +37,12 @@ defmodule Phoenix.PubSub.Kafka.Config do
   def consumer_group_name do
     Application.get_env(:phoenix_pubsub_kafka, :consumer_group_name) || "phx_ps_kfk"
   end
+
+  def restart_interval do
+    Application.get_env(:phoenix_pubsub_kafka, :restart_intarval) || 5000
+  end
+
+  def restart_count_threshold do
+    Application.get_env(:phoenix_pubsub_kafka, :restart_count_threshold) || 2
+  end
 end
