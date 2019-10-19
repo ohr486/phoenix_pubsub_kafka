@@ -1,19 +1,19 @@
 defmodule Phoenix.PubSub.Kafka do
   use Supervisor
-  require Logger
+  alias Phoenix.PubSub.Kafka.Logger
 
   def start_link(name, opts) do
-    Logger.info("--- Phoenix.PubSub.Kafka.start_link(#{inspect name}, #{inspect opts}) ---"
+    Logger.debug("start_link(#{inspect name}, #{inspect opts})")
     sup_name = Module.concat(name, Supervisor)
     Supervisor.start_link(__MODULE__, [name, opts], name: sup_name)
   end
 
   def init([name, opts]) do
-    Logger.info("--- Phoenix.PubSub.Kafka.init([#{inspect name}, #{inspect opts}]) ---"
+    Logger.debug("init([#{inspect name}, #{inspect opts}])")
     node_name = node()
     fastlane = opts[:fastlane]
-    pool_size = 1
-    node_ref = :crypto.rand_bytes(24)
+    pool_size = opts[:pool_size]
+    node_ref = :crypto.strong_rand_bytes(24)
 
     kafka_opts = opts
                  |> Keyword.merge(
