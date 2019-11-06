@@ -8,6 +8,8 @@ Kafka adapter for Phoenix's PubSub layer.
 
 [![CircleCI](https://circleci.com/gh/ohr486/phoenix_pubsub_kafka/tree/master.svg?style=svg)](https://circleci.com/gh/ohr486/phoenix_pubsub_kafka/tree/master)
 
+[![Coverage Status](https://coveralls.io/repos/github/ohr486/phoenix_pubsub_kafka/badge.svg?branch=master)](https://coveralls.io/github/ohr486/phoenix_pubsub_kafka?branch=master)
+
 by adding `phoenix_pubsub_kafka` to your list of dependencies in `mix.exs`:
 
 ```elixir

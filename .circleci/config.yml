@@ -1,7 +1,4 @@
 version: 2
-general:
-  artifacts:
-    - "cover/excoveralls.html"
 
 jobs:
   build:
@@ -16,6 +13,7 @@ jobs:
       - checkout
       - run: mix local.hex --force
       - run: mix local.rebar --force
+
       - restore_cache:
           keys:
             - v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
@@ -25,7 +23,9 @@ jobs:
           keys:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
+
       - run: mix do deps.get, compile
+
       - save_cache:
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
           paths: "deps"
@@ -41,6 +41,4 @@ jobs:
 
       - run: mix test
 
-      - store_artifacts:
-          path: cover/excoveralls.html
-          destination: cover/excoveralls.html
+      - run: mix coveralls.circle
