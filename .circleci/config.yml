@@ -1,4 +1,7 @@
 version: 2
+general:
+  artifacts:
+    - "cover/excoveralls.html"
 
 jobs:
   build:
@@ -37,3 +40,7 @@ jobs:
           paths: "build"
 
       - run: mix test
+
+      - store_artifacts:
+          path: cover/excoveralls.html
+          destination: cover/excoveralls.html
