@@ -1,12 +1,19 @@
 defmodule Phoenix.PubSub.Kafka.Config do
-  alias Phoenix.PubSub.Kafka.Serializer
-  alias Phoenix.PubSub.Kafka.Topic
+  alias Phoenix.PubSub.Kafka.{Serializer, Topic}
 
   @invalid_topic_chars %{
     ":" => "-rep1-",
     "#" => "-rep2-",
     "$" => "-rep3-"
   }
+
+  def debug do
+    Application.get_env(:phoenix_pubsub_kafka, :debug) || false
+  end
+
+  def pubsub_name do
+    Application.get_env(:phoenix_pubsub_kafka, :pubsub_name) || raise "Define :pubsub_name for Phoenix.PubSub.Kafka"
+  end
 
   def serializer do
     Application.get_env(:phoenix_pubsub_kafka, :serializer) || Serializer.Binary
