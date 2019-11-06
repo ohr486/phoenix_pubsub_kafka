@@ -13,6 +13,7 @@ jobs:
       - checkout
       - run: mix local.hex --force
       - run: mix local.rebar --force
+
       - restore_cache:
           keys:
             - v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
@@ -22,7 +23,9 @@ jobs:
           keys:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
+
       - run: mix do deps.get, compile
+
       - save_cache:
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
           paths: "deps"
@@ -37,3 +40,5 @@ jobs:
           paths: "build"
 
       - run: mix test
+
+      - run: mix coveralls.circle

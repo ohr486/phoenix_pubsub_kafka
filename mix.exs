@@ -17,7 +17,7 @@ defmodule PhoenixPubSubKafka.Mixfile do
         ]
       ],
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [coveralls: :test],
+      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
       description: description(),
       package: package(),
       deps: deps()
@@ -36,7 +36,7 @@ defmodule PhoenixPubSubKafka.Mixfile do
       {:kafka_ex, "~> 0.8.1"},
       {:credo, "~> 0.8.10", only: :dev},
       {:dialyxir, "~> 0.5.1", only: :dev},
-      {:excoveralls, "~> 0.8", only: :test},
+      {:excoveralls, "~> 0.10", only: :test},
       {:ex_doc, "~> 0.17.1", only: :docs}
     ]
   end
