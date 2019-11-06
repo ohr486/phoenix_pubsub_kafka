@@ -23,6 +23,10 @@ end
 and, add kafka settings in `config/config.exs`
 
 ```elixir
+config :your_app, YourApp.Endpoint,
+  ...,
+  pubsub: [name: YourApp.PubSub, adapter: Phoenix.PubSub.Kafka]
+
 config :phoenix_pubsub_kafka,
   debug: false,
   pubsub_name: YourApp.PubSub,
