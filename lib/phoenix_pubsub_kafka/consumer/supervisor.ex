@@ -2,7 +2,7 @@ defmodule Phoenix.PubSub.Kafka.Consumer.Supervisor do
   @moduledoc nil
 
   use Supervisor
-  alias Phoenix.PubSub.Kafka.{Config, Logger}
+  alias Phoenix.PubSub.Kafka.{Config, Consumer, Logger}
 
   def start_link(name, opts) do
     Logger.debug("Consumer.Supervisor.start_link(#{inspect name}, #{inspect opts})")
@@ -18,7 +18,11 @@ defmodule Phoenix.PubSub.Kafka.Consumer.Supervisor do
                   |> Keyword.merge(
                     name: server_name
                   )
-    cons_grp_opts = [Phoenix.PubSub.Kafka.Consumer.Server, Config.consumer_group_name(), Config.listening_topics(), server_opts]
+    cons_grp_opts = [
+      Consumer.Server,
+      Config.consumer_group_name(),
+      Config.listening_topics(), server_opts
+    ]
     children = [
       supervisor(KafkaEx.ConsumerGroup, cons_grp_opts)
     ]

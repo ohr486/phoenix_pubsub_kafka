@@ -9,8 +9,13 @@ defmodule Phoenix.PubSub.Kafka.Consumer.Server do
   def handle_message_set(message_set, state) do
     Logger.debug("Consumer.Server.handle_message_set(#{inspect message_set}, #{inspect state})")
     for %Message{value: message} <- message_set do
-      {_remote_node_ref, fastlane, pool_size, from_pid, phx_topic, msg} = Config.serializer.decode_message(message)
-      Local.broadcast(fastlane, Config.pubsub_name(), pool_size, from_pid, phx_topic, msg)
+      {_remote_node_ref, fastlane, pool_size, from_pid, phx_topic, msg} =
+        Config.serializer.decode_message(message)
+
+      Local.broadcast(
+        fastlane, Config.pubsub_name(), pool_size,
+        from_pid, phx_topic, msg
+      )
     end
     {:async_commit, state}
   end

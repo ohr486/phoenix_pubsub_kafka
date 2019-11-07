@@ -35,7 +35,11 @@ defmodule Phoenix.PubSub.Kafka.Producer.Server do
                     topic: Topic.phoenix_topic_to_kafka_topic(phx_topic),
                     partition: partition,
                     required_acks: required_acks,
-                    messages: [%KafkaEx.Protocol.Produce.Message{value: Config.serializer.encode_message(kafka_msg)}]
+                    messages: [
+                      %KafkaEx.Protocol.Produce.Message{
+                        value: Config.serializer.encode_message(kafka_msg)
+                      }
+                    ]
                   }
                   |> KafkaEx.produce
 

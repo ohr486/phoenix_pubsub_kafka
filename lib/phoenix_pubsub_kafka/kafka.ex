@@ -23,15 +23,22 @@ defmodule Phoenix.PubSub.Kafka do
                  )
 
     dispatch_rules = [
-      {:broadcast, Phoenix.PubSub.Kafka.Producer.Server, [fastlane, pool_size, node_ref]},
-      {:direct_broadcast, Phoenix.PubSub.Kafka.Producer.Server, [fastlane, pool_size, node_ref]},
+      {:broadcast,
+        Phoenix.PubSub.Kafka.Producer.Server,
+        [fastlane, pool_size, node_ref]},
+      {:direct_broadcast,
+        Phoenix.PubSub.Kafka.Producer.Server,
+        [fastlane, pool_size, node_ref]},
       {:node_name, __MODULE__, [node_name]}
     ]
 
     children = [
-      supervisor(Phoenix.PubSub.LocalSupervisor, [name, pool_size, dispatch_rules]),
-      supervisor(Phoenix.PubSub.Kafka.Producer.Supervisor, [name, kafka_opts]),
-      supervisor(Phoenix.PubSub.Kafka.Consumer.Supervisor, [name, kafka_opts])
+      supervisor(Phoenix.PubSub.LocalSupervisor,
+        [name, pool_size, dispatch_rules]),
+      supervisor(Phoenix.PubSub.Kafka.Producer.Supervisor,
+        [name, kafka_opts]),
+      supervisor(Phoenix.PubSub.Kafka.Consumer.Supervisor,
+        [name, kafka_opts])
     ]
 
     supervise(children, strategy: :one_for_all)
