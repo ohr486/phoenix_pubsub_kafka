@@ -1,10 +1,12 @@
-defmodule Phoenix.PubSub.Kafka.Logger do
+defmodule Phoenix.PubSub.Kafka.Klogger do
+  @moduledoc nil
+
   alias Phoenix.PubSub.Kafka.Config
   require Logger
 
   def debug(msg) do
     case Config.debug() do
-      true -> Logger.debug("[PubSub.Kafka] #{inspect msg}")
+      true -> Logger.debug fn -> "[PubSub.Kafka] #{inspect msg}" end
       _ -> nil
     end
   end

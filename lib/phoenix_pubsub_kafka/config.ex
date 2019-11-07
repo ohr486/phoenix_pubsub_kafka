@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Config do
+  @moduledoc nil
+
   alias Phoenix.PubSub.Kafka.{Serializer, Topic}
 
   @invalid_topic_chars %{
@@ -8,32 +10,39 @@ defmodule Phoenix.PubSub.Kafka.Config do
   }
 
   def debug do
-    Application.get_env(:phoenix_pubsub_kafka, :debug) || false
+    Application.get_env(:phoenix_pubsub_kafka, :debug)
+    || false
   end
 
   def pubsub_name do
-    Application.get_env(:phoenix_pubsub_kafka, :pubsub_name) || raise "Define :pubsub_name for Phoenix.PubSub.Kafka"
+    Application.get_env(:phoenix_pubsub_kafka, :pubsub_name)
+    || raise "Define :pubsub_name for Phoenix.PubSub.Kafka"
   end
 
   def serializer do
-    Application.get_env(:phoenix_pubsub_kafka, :serializer) || Serializer.Binary
+    Application.get_env(:phoenix_pubsub_kafka, :serializer)
+    || Serializer.Binary
   end
 
   def invalid_topic_chars do
-    diff = Application.get_env(:phoenix_pubsub_kafka, :invalid_topic_chars) || %{}
+    diff = Application.get_env(:phoenix_pubsub_kafka, :invalid_topic_chars)
+           || %{}
     Map.merge(@invalid_topic_chars, diff)
   end
 
   def topic_prefix do
-    Application.get_env(:phoenix_pubsub_kafka, :topic_prefix) || ""
+    Application.get_env(:phoenix_pubsub_kafka, :topic_prefix)
+    || ""
   end
 
   def topic_convert_func do
-    Application.get_env(:phoenix_pubsub_kafka, :topic_convert_func) || &(&1)
+    Application.get_env(:phoenix_pubsub_kafka, :topic_convert_func)
+    || &(&1)
   end
 
   def listening_topics do
-    topics = Application.get_env(:phoenix_pubsub_kafka, :listening_topics) || raise "set listening topics"
+    topics = Application.get_env(:phoenix_pubsub_kafka, :listening_topics)
+             || raise "set listening topics"
     Enum.map(topics, fn topic ->
       topic
       |> Topic.replace_invalid_chars
@@ -42,6 +51,7 @@ defmodule Phoenix.PubSub.Kafka.Config do
   end
 
   def consumer_group_name do
-    Application.get_env(:phoenix_pubsub_kafka, :consumer_group_name) || "phx_ps_kfk"
+    Application.get_env(:phoenix_pubsub_kafka, :consumer_group_name)
+    || "phx_ps_kfk"
   end
 end
