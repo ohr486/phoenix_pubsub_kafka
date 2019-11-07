@@ -15,6 +15,7 @@ defmodule Phoenix.PubSub.Kafka.Producer.Server do
     {:ok, %{}}
   end
 
+  # TODO: Function takes too many parameters
   def broadcast(fastlane, pool_size, node_ref, from_pid, topic, payload) do
     Klogger.debug("Producer.Server.do_broadcast(#{inspect fastlane},#{inspect pool_size},#{inspect node_ref},#{inspect from_pid},#{inspect topic},#{inspect payload})")
     do_broadcast(fastlane, pool_size, node_ref, from_pid, topic, payload)
@@ -25,6 +26,7 @@ defmodule Phoenix.PubSub.Kafka.Producer.Server do
     Klogger.debug("TODO: imple Producer.Server.direct_broadcast(#{inspect arg})")
   end
 
+  # TODO: Function takes too many parameters
   defp do_broadcast(fastlane, pool_size, node_ref, from_pid, phx_topic, payload) do
     Klogger.debug("Producer.Server.do_broadcast(#{inspect fastlane},#{inspect pool_size},#{inspect node_ref},#{inspect from_pid},#{inspect phx_topic},#{inspect payload})")
     kafka_msg = {node_ref, fastlane, pool_size, from_pid, phx_topic, payload}
