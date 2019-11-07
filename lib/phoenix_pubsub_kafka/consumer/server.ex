@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Consumer.Server do
+  @moduledoc nil
+
   use KafkaEx.GenConsumer
   alias KafkaEx.Protocol.Fetch.Message
   alias Phoenix.PubSub.Local

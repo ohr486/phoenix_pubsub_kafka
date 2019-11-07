@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Config do
+  @moduledoc nil
+
   alias Phoenix.PubSub.Kafka.{Serializer, Topic}
 
   @invalid_topic_chars %{

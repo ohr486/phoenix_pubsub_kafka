@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka do
+  @moduledoc nil
+
   use Supervisor
   alias Phoenix.PubSub.Kafka.Logger
 

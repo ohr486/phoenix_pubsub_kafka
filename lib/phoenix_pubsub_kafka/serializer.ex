@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Serializer do
+  @moduledoc nil
+
   defmodule Binary do
     def encode_message(message) do
       :erlang.term_to_binary(message)

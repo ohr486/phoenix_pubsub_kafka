@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Producer.Server do
+  @moduledoc nil
+
   use GenServer
   alias Phoenix.PubSub.Kafka.{Config, Logger, Topic}
 

@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Logger do
+  @moduledoc nil
+
   alias Phoenix.PubSub.Kafka.Config
   require Logger
 

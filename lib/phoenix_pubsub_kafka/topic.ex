@@ -1,4 +1,6 @@
 defmodule Phoenix.PubSub.Kafka.Topic do
+  @moduledoc nil
+
   alias Phoenix.PubSub.Kafka.Config
 
   def phoenix_topic_to_kafka_topic(topic) do
