@@ -39,6 +39,8 @@ jobs:
           key: v1-build-cache
           paths: "build"
 
+      - run: mix lint
+
       - run: mix test
 
       - run: mix coveralls.circle

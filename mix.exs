@@ -20,7 +20,8 @@ defmodule PhoenixPubSubKafka.Mixfile do
       preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
       description: description(),
       package: package(),
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -51,6 +52,12 @@ defmodule PhoenixPubSubKafka.Mixfile do
       files: ["lib", "config/config.exs", "mix.exs", "README.md"],
       licenses: ["MIT"],
       links: %{"Github" => "https://github.com/ohr486/phoenix_pubsub_kafka"}
+    ]
+  end
+
+  defp aliases do
+    [
+      lint: ["credo --strict"]
     ]
   end
 end
