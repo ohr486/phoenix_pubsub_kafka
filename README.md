@@ -2,13 +2,11 @@
 
 Kafka adapter for Phoenix's PubSub layer.
 
-## Installation
-
 [![Build Status](https://travis-ci.org/ohr486/phoenix_pubsub_kafka.svg?branch=master)](https://travis-ci.org/ohr486/phoenix_pubsub_kafka)
-
 [![CircleCI](https://circleci.com/gh/ohr486/phoenix_pubsub_kafka/tree/master.svg?style=svg)](https://circleci.com/gh/ohr486/phoenix_pubsub_kafka/tree/master)
-
 [![Coverage Status](https://coveralls.io/repos/github/ohr486/phoenix_pubsub_kafka/badge.svg?branch=master)](https://coveralls.io/github/ohr486/phoenix_pubsub_kafka?branch=master)
+
+## Installation
 
 by adding `phoenix_pubsub_kafka` to your list of dependencies in `mix.exs`:
 
