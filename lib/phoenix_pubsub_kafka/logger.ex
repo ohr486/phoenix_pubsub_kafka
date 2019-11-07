@@ -6,7 +6,7 @@ defmodule Phoenix.PubSub.Kafka.Logger do
 
   def debug(msg) do
     case Config.debug() do
-      true -> Logger.debug("[PubSub.Kafka] #{inspect msg}")
+      true -> Logger.debug fn -> "[PubSub.Kafka] #{inspect msg}" end
       _ -> nil
     end
   end
