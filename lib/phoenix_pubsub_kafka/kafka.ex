@@ -2,16 +2,16 @@ defmodule Phoenix.PubSub.Kafka do
   @moduledoc nil
 
   use Supervisor
-  alias Phoenix.PubSub.Kafka
+  alias Phoenix.PubSub.Kafka.Klogger
 
   def start_link(name, opts) do
-    Kafka.Logger.debug("start_link(#{inspect name}, #{inspect opts})")
+    Klogger.debug("start_link(#{inspect name}, #{inspect opts})")
     sup_name = Module.concat(name, Supervisor)
     Supervisor.start_link(__MODULE__, [name, opts], name: sup_name)
   end
 
   def init([name, opts]) do
-    Kafka.Logger.debug("init([#{inspect name}, #{inspect opts}])")
+    Klogger.debug("init([#{inspect name}, #{inspect opts}])")
     node_name = node()
     fastlane = opts[:fastlane]
     pool_size = opts[:pool_size]

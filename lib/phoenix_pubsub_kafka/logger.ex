@@ -1,4 +1,4 @@
-defmodule Phoenix.PubSub.Kafka.Logger do
+defmodule Phoenix.PubSub.Kafka.Klogger do
   @moduledoc nil
 
   alias Phoenix.PubSub.Kafka.Config
