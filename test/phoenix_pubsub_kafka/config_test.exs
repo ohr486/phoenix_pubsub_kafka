@@ -23,16 +23,6 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
     assert false == Config.debug()
   end
 
-  test "#debug returns false when :debug of config is false"do
-    Application.put_env(:phoenix_pubsub_kafka, :debug, false)
-    assert false == Config.debug()
-  end
-
-  test "#debug returns true when :debug of config is true"do
-    Application.put_env(:phoenix_pubsub_kafka, :debug, true) 
-    assert true == Config.debug()
-  end
-
   test "#debug returns false when :debug of config is :foo"do
     Application.put_env(:phoenix_pubsub_kafka, :debug, :foo) 
     assert :foo == Config.debug()
