@@ -29,6 +29,7 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
   end
 
   # --- Phoenix.PubSub.Kafka.Config.pubsub_name() ---
+
   test "#pubsub_name raise error when :pubsub_name of config is unset"do
     Application.put_env(:phoenix_pubsub_kafka, :pubsub_name, nil) 
     assert_raise(RuntimeError, "Define :pubsub_name for Phoenix.PubSub.Kafka", fn -> Config.pubsub_name() end)
@@ -40,6 +41,7 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
   end
 
   # --- Phoenix.PubSub.Kafka.Config.serializer() ---
+
   test "#serializer returns Phoenix.PubSub.Kafka.Serializer.Binary when :serializer of config is unset" do
     Application.put_env(:phoenix_pubsub_kafka, :serializer, nil)
     assert Phoenix.PubSub.Kafka.Serializer.Binary == Config.serializer()
@@ -55,6 +57,7 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
   test "#invalid_topic_chars"
 
   # --- Phoenix.PubSub.Kafka.Config.topic_prefix() ---
+
   test "#topic_prefix returns blank str when :topic_prefix of config is unset" do
     Application.put_env(:phoenix_pubsub_kafka, :topic_prefix, nil)
     assert "" == Config.topic_prefix()
@@ -74,6 +77,7 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
   test "#listening_topics"
 
   # --- Phoenix.PubSub.Kafka.Config.consumer_group_name() ---
+
   test "#consumer_group_name returns phx_ps_kfk when :consumer_group_name of config is unset" do
     Application.put_env(:phoenix_pubsub_kafka, :consumer_group_name, nil)
     assert "phx_ps_kfk" == Config.consumer_group_name()
