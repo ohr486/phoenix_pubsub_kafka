@@ -23,16 +23,6 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
     assert false == Config.debug()
   end
 
-  test "#debug returns false when :debug of config is false"do
-    Application.put_env(:phoenix_pubsub_kafka, :debug, false)
-    assert false == Config.debug()
-  end
-
-  test "#debug returns true when :debug of config is true"do
-    Application.put_env(:phoenix_pubsub_kafka, :debug, true) 
-    assert true == Config.debug()
-  end
-
   test "#debug returns false when :debug of config is :foo"do
     Application.put_env(:phoenix_pubsub_kafka, :debug, :foo) 
     assert :foo == Config.debug()
@@ -50,17 +40,33 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
     assert :foo == Config.pubsub_name()
   end
 
-  @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.serializer() ---
-  test "#serializer"
+
+  test "#serializer returns Phoenix.PubSub.Kafka.Serializer.Binary when :serializer of config is unset" do
+    Application.put_env(:phoenix_pubsub_kafka, :serializer, nil)
+    assert Phoenix.PubSub.Kafka.Serializer.Binary == Config.serializer()
+  end
+
+  test "#serializer returns :foo when :serializer of config is :foo" do
+    Application.put_env(:phoenix_pubsub_kafka, :serializer, :foo)
+    assert :foo == Config.serializer()
+  end
 
   @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.invalid_topic_chars() ---
   test "#invalid_topic_chars"
 
-  @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.topic_prefix() ---
-  test "#topic_prefix"
+
+  test "#topic_prefix returns blank str when :topic_prefix of config is unset" do
+    Application.put_env(:phoenix_pubsub_kafka, :topic_prefix, nil)
+    assert "" == Config.topic_prefix()
+  end
+
+  test "#topic_prefix returns :foo when :topic_prefix of config is :foo" do
+    Application.put_env(:phoenix_pubsub_kafka, :topic_prefix, :foo)
+    assert :foo == Config.topic_prefix()
+  end
 
   @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.topic_convert_func() ---
@@ -70,7 +76,15 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
   # --- Phoenix.PubSub.Kafka.Config.listening_topics() ---
   test "#listening_topics"
 
-  @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.consumer_group_name() ---
-  test "#consumer_group_name"
+
+  test "#consumer_group_name returns phx_ps_kfk when :consumer_group_name of config is unset" do
+    Application.put_env(:phoenix_pubsub_kafka, :consumer_group_name, nil)
+    assert "phx_ps_kfk" == Config.consumer_group_name()
+  end
+
+  test "#consumer_group_name returns :foo when :consumer_group_name of config is :foo" do
+    Application.put_env(:phoenix_pubsub_kafka, :consumer_group_name, :foo)
+    assert :foo == Config.consumer_group_name()
+  end
 end
