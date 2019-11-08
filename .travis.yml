@@ -1,9 +1,9 @@
 language: elixir
 sudo: required
 otp_release:
-  - 20.3.8.23
-  - 21.3.8.10
-  - 22.1.6
+  - 20.3
+  - 21.3
+  - 22.1
 elixir:
   - 1.8.2
   - 1.9.4
