@@ -68,9 +68,18 @@ defmodule Phoenix.PubSub.Kafka.ConfigTest do
     assert :foo == Config.topic_prefix()
   end
 
-  @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.topic_convert_func() ---
-  test "#topic_convert_func"
+
+  test "#topic_convert_func returns &(&1) when :topic_convert_func of config is unset" do
+    Application.put_env(:phoenix_pubsub_kafka, :topic_convert_func, nil)
+    func = Config.topic_convert_func()
+    assert :foo == Config.topic_convert_func().(:foo)
+  end
+
+  test "#topic_convert_func returns :foo when :topic_convert_func of config is :foo" do
+    Application.put_env(:phoenix_pubsub_kafka, :topic_convert_func, :foo)
+    assert :foo == Config.topic_convert_func()
+  end
 
   @tag :skip
   # --- Phoenix.PubSub.Kafka.Config.listening_topics() ---
