@@ -23,3 +23,5 @@ services:
 script:
   - mix lint
   - mix test
+  - mix dialyzer --plt
+  - mix dialyzer
