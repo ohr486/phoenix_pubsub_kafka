@@ -10,11 +10,7 @@ defmodule PhoenixPubSubKafka.Mixfile do
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       dialyzer: [
-        plt_add_deps: :transitive,
-        flags: [
-          :error_handling,
-          :race_connditions
-        ]
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
       ],
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
@@ -36,7 +32,7 @@ defmodule PhoenixPubSubKafka.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:kafka_ex, "~> 0.8.1"},
       {:credo, "~> 0.8.10", only: [:dev, :test]},
-      {:dialyxir, "~> 0.5.1", only: [:dev, :test]},
+      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
       {:ex_doc, "~> 0.17.1", only: :docs}
     ]

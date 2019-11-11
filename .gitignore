@@ -7,6 +7,10 @@
 erl_crash.dump
 *.ez
 
+# for dialyzer
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
+
 # for ide
 .idea
 *.iml
