@@ -9,7 +9,7 @@ defmodule Phoenix.PubSub.Kafka.Serializer do
       :erlang.term_to_binary(message)
     end
 
-    @spec encode_message(binary()) :: String.t() | atom()
+    @spec decode_message(binary()) :: String.t() | atom()
     def decode_message(message) do
       :erlang.binary_to_term(message)
     end
