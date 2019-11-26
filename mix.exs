@@ -34,7 +34,8 @@ defmodule PhoenixPubSubKafka.Mixfile do
       {:credo, "~> 0.8.10", only: [:dev, :test]},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
-      {:ex_doc, "~> 0.17.1", only: :docs}
+      {:ex_doc, "~> 0.17.1", only: :docs},
+      {:mix_test_watch, "~> 1.0", only: :dev},
     ]
   end
 
@@ -53,7 +54,8 @@ defmodule PhoenixPubSubKafka.Mixfile do
 
   defp aliases do
     [
-      lint: ["credo --strict"]
+      lint: ["credo --strict"],
+      watch: ["test.watch"],
     ]
   end
 end
